@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /**
  * Stores data to be used between scenes (chiefly, calibration details).
@@ -23,8 +24,12 @@ public class GlobalControl : MonoBehaviour
     // Vector2 to store the number of successes, the player must land a success in (x) of the last (y) throws to pass the level
     public Vector2Int numSuccesses;
 
+    // Enum for scene selection, as well as specific Scene object to load
     public enum Scene { TitleScreen, Classroom, Park, Moon };
     public Scene nextScene;
+
+    // Image to load on UI to fade screen to black
+    public Image blackScreen;
 
     // Single instance of this class
     public static GlobalControl Instance;
@@ -43,5 +48,10 @@ public class GlobalControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ScreenFade(float changeVal)
+    {
+
     }
  }
