@@ -94,8 +94,11 @@ public class MenuController : MonoBehaviour
         {
 
         }
-        GlobalControl.Instance.progression = ProgressionConvert(chooseMode.value);
-        GlobalControl.Instance.isRightHanded = rightHandToggle.enabled;
-        SceneManager.LoadScene("Calibration");
+        if (!GlobalControl.Instance.hasCalibrated)
+        {
+            GlobalControl.Instance.progression = ProgressionConvert(chooseMode.value);
+            GlobalControl.Instance.isRightHanded = rightHandToggle.enabled;
+            SceneManager.LoadScene("Calibration");
+        }
     }
 }

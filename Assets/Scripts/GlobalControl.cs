@@ -8,6 +8,9 @@ using UnityEngine.UI;
  */ 
 public class GlobalControl : MonoBehaviour
 {
+    // bool to prevent more than one calibration
+    public bool hasCalibrated = false;
+
     // float data for calibration
     public float height, armLength, platformOffset, multiplier, targetOffset;
 
