@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 702472127c52faa4c97831df3b9ca576
   - enabled: 1
@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classroom.unity
     guid: fc1dc3184b2b05240803d6e20e6c86a0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Park.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Moon.unity
     guid: a9df58af1eff6a8428daed11016b226d
   m_configObjects: {}

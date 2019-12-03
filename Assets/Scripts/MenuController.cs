@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Changes the menu UI based on which Progression Type is currently selected
         if (ProgressionConvert(chooseMode.value).Equals(GlobalControl.ProgressionType.Performance))
         {
             valueText.gameObject.SetActive(true);
@@ -72,33 +73,51 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // 
+    // Converts the value of EnvironmentSelect to a Progression type
+    GlobalControl.Scene EnvironmentConvert(int value)
+    {
+        if (value == 0)
+        {
+            return GlobalControl.Scene.Classroom;
+        }
+        if (value == 1)
+        {
+            return GlobalControl.Scene.Park;
+        }
+        else
+        {
+            return GlobalControl.Scene.Moon;
+        }
+    }
 
     // Progresses to next scene, setting values in GlobalControl
     public void NextScene()
     {
+        // Sets success trackers if operator selected Performance progression mode
         if (ProgressionConvert(chooseMode.value).Equals(GlobalControl.ProgressionType.Performance))
         {
-            if (totalSlider.value < successSlider.value)
-            {
-                Debug.Log("Total cannot be fewer than successes required!");
-                return;
-            }
-            else
-            {
-                GlobalControl.Instance.numSuccesses.x = (int) successSlider.value;
-                GlobalControl.Instance.numSuccesses.y = (int) totalSlider.value;
-            }
+            GlobalControl.Instance.numSuccesses.x = (int) successSlider.value;
+            GlobalControl.Instance.numSuccesses.y = (int) totalSlider.value;
         }
+        // Sets nextScene in GlobalControl to the proper scene select if operator selected
+        // Choice progression mode
         if (ProgressionConvert(chooseMode.value).Equals(GlobalControl.ProgressionType.Choice))
         {
-
+            // Sets nextScene to be the selected environment
+            GlobalControl.Instance.nextScene = EnvironmentConvert(environmentSelect.value);
         }
+        // In the event the player has not calibrated during Choice progression (this always
+        // applies to other two modes), loads Calibration settings and scene
         if (!GlobalControl.Instance.hasCalibrated)
         {
             GlobalControl.Instance.progression = ProgressionConvert(chooseMode.value);
             GlobalControl.Instance.isRightHanded = rightHandToggle.enabled;
+            // Specifically loads Calibration scene here so as to not overwrite Choice's nextScene
+            Debug.Log("Loading Calibration Scene");
             SceneManager.LoadScene("Calibration");
         }
+        // If player has already calibrated and is still undergoing Choice progression,
+        // loads new selected environment here
+        GlobalControl.Instance.NextScene();
     }
 }

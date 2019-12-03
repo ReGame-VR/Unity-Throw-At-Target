@@ -71,6 +71,7 @@ public class RecalibrateHeight : MonoBehaviour
         if (OVRInput.GetUp(OVRInput.RawButton.Y) || (Input.GetKeyUp(KeyCode.RightShift)) && !calibrationComplete)
         {
             calibrationComplete = true;
+            GlobalControl.Instance.hasCalibrated = true;
             GlobalControl.Instance.armLength = armLength;
             GlobalControl.Instance.height = height;
         }
@@ -84,7 +85,6 @@ public class RecalibrateHeight : MonoBehaviour
         // Loads Classroom level
         if ((OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)) && calibrationComplete)
         {
-            //SceneManager.LoadScene("Classroom");
             levelScaler.GetComponent<LevelHeightScale>().LoadNextScene();
         }
     }

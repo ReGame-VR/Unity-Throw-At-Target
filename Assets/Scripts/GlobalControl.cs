@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /**
@@ -21,7 +22,7 @@ public class GlobalControl : MonoBehaviour
     public string participantID;
 
     // enum type(and instance) to differentiate different progression 
-    public enum ProgressionType {Performance, Random, Choice}; // NumThrows ??
+    public enum ProgressionType {Performance, Random, Choice};
     public ProgressionType progression;
 
     // Vector2 to store the number of successes, the player must land a success in (x) of the last (y) throws to pass the level
@@ -53,8 +54,23 @@ public class GlobalControl : MonoBehaviour
         }
     }
 
-    public void ScreenFade(float changeVal)
+    // Method for swapping scenes during Choice progression mode
+    public void NextScene()
     {
-
+        switch(nextScene)
+        {
+            case Scene.TitleScreen:
+                SceneManager.LoadScene("TitleScreen");
+                break;
+            case Scene.Classroom:
+                SceneManager.LoadScene("Classroom");
+                break;
+            case Scene.Park:
+                SceneManager.LoadScene("Park");
+                break;
+            case Scene.Moon:
+                SceneManager.LoadScene("Moon");
+                break;
+        }
     }
  }

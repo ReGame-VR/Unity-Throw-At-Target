@@ -24,7 +24,7 @@ public class LevelHeightScale : MonoBehaviour
     // gameObject reference to the scene's ProjectileManager
     public GameObject projectileManager;
     // Scene to track current active scene
-    private Scene scene;
+    private Scene currScene;
     // int to get index of next scene to load from calibration
     private int nextSceneIndex;
 
@@ -40,7 +40,7 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
         targetOffset = GlobalControl.Instance.targetOffset;
-        scene = SceneManager.GetActiveScene();
+        currScene = SceneManager.GetActiveScene();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,11 +52,15 @@ public class LevelHeightScale : MonoBehaviour
         }
         AdjustPlatform();
         AdjustTarget();
-        if (!scene.name.Equals("Calibration"))
+        if (!currScene.name.Equals("Calibration"))
         {
             SpawnProjectile();
         }
-        nextSceneIndex = scene.buildIndex + 1;
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
+        {
+            GlobalControl.Instance.nextScene = GlobalControl.Scene.TitleScreen;
+        }
+        nextSceneIndex = currScene.buildIndex + 1;
     }
 
     // Update is called once per frame
@@ -65,7 +69,7 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
 
-        if (scene.name != "Calibration" && (OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)))
+        if (currScene.name != "Calibration" && (OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)))
         {
             LoadNextScene();
         }
@@ -109,6 +113,7 @@ public class LevelHeightScale : MonoBehaviour
 
     public void LoadNextScene()
     {
+        // If player is in Choice progression mode, move to the selected nextScene
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
         {
             if (GlobalControl.Instance.nextScene.Equals(GlobalControl.Scene.TitleScreen))
@@ -128,7 +133,7 @@ public class LevelHeightScale : MonoBehaviour
                 SceneManager.LoadScene("Moon");
             }
         }
-        // Otherwise, move linearly to the next scene
+        // Otherwise, when in other modes, move linearly to the next scene
         SceneManager.LoadScene(nextSceneIndex);
     }
 }
