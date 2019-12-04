@@ -63,12 +63,15 @@ public class MenuController : MonoBehaviour
     GlobalControl.ProgressionType ProgressionConvert(int value)
     {
         if (value == 0) {
+            //Debug.Log("Progression mode Performance selected");
             return GlobalControl.ProgressionType.Performance;
         }
         if (value == 1) {
+            //Debug.Log("Progression mode Random selected");
             return GlobalControl.ProgressionType.Random;
         }
-        else { 
+        else {
+            //Debug.Log("Progression mode Choice selected");
             return GlobalControl.ProgressionType.Choice;
         }
     }
@@ -93,15 +96,16 @@ public class MenuController : MonoBehaviour
     // Progresses to next scene, setting values in GlobalControl
     public void NextScene()
     {
+        GlobalControl.Instance.progression = ProgressionConvert(chooseMode.value);
         // Sets success trackers if operator selected Performance progression mode
-        if (ProgressionConvert(chooseMode.value).Equals(GlobalControl.ProgressionType.Performance))
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
         {
             GlobalControl.Instance.numSuccesses.x = (int) successSlider.value;
             GlobalControl.Instance.numSuccesses.y = (int) totalSlider.value;
         }
         // Sets nextScene in GlobalControl to the proper scene select if operator selected
         // Choice progression mode
-        if (ProgressionConvert(chooseMode.value).Equals(GlobalControl.ProgressionType.Choice))
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
         {
             // Sets nextScene to be the selected environment
             GlobalControl.Instance.nextScene = EnvironmentConvert(environmentSelect.value);
@@ -110,7 +114,6 @@ public class MenuController : MonoBehaviour
         // applies to other two modes), loads Calibration settings and scene
         if (!GlobalControl.Instance.hasCalibrated)
         {
-            GlobalControl.Instance.progression = ProgressionConvert(chooseMode.value);
             GlobalControl.Instance.isRightHanded = rightHandToggle.enabled;
             // Specifically loads Calibration scene here so as to not overwrite Choice's nextScene
             Debug.Log("Loading Calibration Scene");
@@ -118,6 +121,6 @@ public class MenuController : MonoBehaviour
         }
         // If player has already calibrated and is still undergoing Choice progression,
         // loads new selected environment here
-        GlobalControl.Instance.NextScene();
+        //GlobalControl.Instance.NextScene();
     }
 }

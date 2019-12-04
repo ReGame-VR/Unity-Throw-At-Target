@@ -58,7 +58,7 @@ public class LevelHeightScale : MonoBehaviour
         }
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
         {
-            GlobalControl.Instance.nextScene = GlobalControl.Scene.TitleScreen;
+            GlobalControl.Instance.nextScene = GlobalControl.Scene.Classroom;
         }
         nextSceneIndex = currScene.buildIndex + 1;
     }
@@ -116,24 +116,10 @@ public class LevelHeightScale : MonoBehaviour
         // If player is in Choice progression mode, move to the selected nextScene
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
         {
-            if (GlobalControl.Instance.nextScene.Equals(GlobalControl.Scene.TitleScreen))
-            {
-                SceneManager.LoadScene("TitleScreen");
-            }
-            if (GlobalControl.Instance.nextScene.Equals(GlobalControl.Scene.Classroom))
-            {
-                SceneManager.LoadScene("Classroom");
-            }
-            if (GlobalControl.Instance.nextScene.Equals(GlobalControl.Scene.Park))
-            {
-                SceneManager.LoadScene("Park");
-            }
-            if (GlobalControl.Instance.nextScene.Equals(GlobalControl.Scene.Moon))
-            {
-                SceneManager.LoadScene("Moon");
-            }
+            GlobalControl.Instance.NextScene();
         }
         // Otherwise, when in other modes, move linearly to the next scene
+        Debug.Log("Loading next scene");
         SceneManager.LoadScene(nextSceneIndex);
     }
 }

@@ -2582,15 +2582,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a2de8a2b074ba4eb742eb75343742c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasCalibrated: 0
   height: 0
   armLength: 0
   platformOffset: 0.12
   multiplier: 2.5
-  targetOffset: 2.6
+  targetOffset: 3
   isRightHanded: 0
   participantID: 
   progression: 0
   numSuccesses: {x: 0, y: 0}
+  nextScene: 0
+  blackScreen: {fileID: 0}
 --- !u!4 &512867281
 Transform:
   m_ObjectHideFlags: 0

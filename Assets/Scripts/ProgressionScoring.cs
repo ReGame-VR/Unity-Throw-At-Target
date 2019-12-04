@@ -9,6 +9,8 @@ public class ProgressionScoring : MonoBehaviour
     public Result[] throws;
     public int totalThrows, totalSucesses;
     public int randomTotal;
+    // GameObject reference to levelScaler object
+    public GameObject levelScaler;
     // Scene to track current active scene
     private Scene scene;
     // int to get index of next scene to load from calibration
@@ -100,14 +102,6 @@ public class ProgressionScoring : MonoBehaviour
     // Progress to next scene
     public void LoadNextScene()
     {
-        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance) 
-            || GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Random))
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
-        {
-            SceneManager.LoadScene("Calibration");
-        }
+        levelScaler.GetComponent<LevelHeightScale>().LoadNextScene();
     }
 }

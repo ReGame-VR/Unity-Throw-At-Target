@@ -25,7 +25,8 @@ public class GlobalControl : MonoBehaviour
     public enum ProgressionType {Performance, Random, Choice};
     public ProgressionType progression;
 
-    // Vector2 to store the number of successes, the player must land a success in (x) of the last (y) throws to pass the level
+    // Vector2 to store the number of successes, the player must land a success in (x) of the last (y) throws 
+    // to pass the level in Performance progression type
     public Vector2Int numSuccesses;
 
     // Enum for scene selection, as well as specific Scene object to load

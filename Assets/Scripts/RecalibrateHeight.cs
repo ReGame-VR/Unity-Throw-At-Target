@@ -24,8 +24,6 @@ public class RecalibrateHeight : MonoBehaviour
     public GameObject levelScaler;
     // bool to prevent multiple projectile spawns
     private bool projectileSpawned;
-    // Boolean to stop accepting new data for height and arm length
-    private bool calibrationComplete; 
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +39,6 @@ public class RecalibrateHeight : MonoBehaviour
         {
             handController = leftHand;
         }
-        calibrationComplete = false;
         projectileSpawned = false;
     }
 
@@ -58,7 +55,7 @@ public class RecalibrateHeight : MonoBehaviour
             armLengthDisp.text = "Left Arm Length = " + armLength;
         }
         // Taking values while calibration is not yet complete
-        if (!calibrationComplete)
+        if (!GlobalControl.Instance.hasCalibrated)
         {
             height = centerEyeAnchor.transform.position.y;
             armLength = handController.transform.position.y;
@@ -68,22 +65,21 @@ public class RecalibrateHeight : MonoBehaviour
             levelScaler.GetComponent<LevelHeightScale>().AdjustPlatform();
         }
         // If operator presses RightShift, or if player presses Y, the calibration completes and values are stored
-        if (OVRInput.GetUp(OVRInput.RawButton.Y) || (Input.GetKeyUp(KeyCode.RightShift)) && !calibrationComplete)
+        if (OVRInput.GetUp(OVRInput.RawButton.Y) || (Input.GetKeyUp(KeyCode.RightShift)) && !GlobalControl.Instance.hasCalibrated)
         {
-            calibrationComplete = true;
             GlobalControl.Instance.hasCalibrated = true;
             GlobalControl.Instance.armLength = armLength;
             GlobalControl.Instance.height = height;
         }
         // Spawns a projectile once
-        if (calibrationComplete && !projectileSpawned)
+        if (GlobalControl.Instance.hasCalibrated && !projectileSpawned)
         {
             levelScaler.GetComponent<LevelHeightScale>().SpawnProjectile();
             projectileSpawned = true;
             Debug.Log("Calibration complete");
         }
         // Loads Classroom level
-        if ((OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)) && calibrationComplete)
+        if ((OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)) && GlobalControl.Instance.hasCalibrated)
         {
             levelScaler.GetComponent<LevelHeightScale>().LoadNextScene();
         }
