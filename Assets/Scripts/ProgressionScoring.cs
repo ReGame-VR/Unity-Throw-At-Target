@@ -21,6 +21,7 @@ public class ProgressionScoring : MonoBehaviour
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Random))
         {
             randomTotal = Random.Range(4, 20);
+            Debug.Log(randomTotal);
         }
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
         {

@@ -27,6 +27,10 @@ public class LevelHeightScale : MonoBehaviour
     private Scene currScene;
     // int to get index of next scene to load from calibration
     private int nextSceneIndex;
+    // Gameobject to control screenfades
+    public GameObject screenFade;
+    // bool to say when screen has fully faded out
+    bool finishedFadingOut;
 
     void Awake()
     {
@@ -71,15 +75,25 @@ public class LevelHeightScale : MonoBehaviour
 
         if (currScene.name != "Calibration" && (OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)))
         {
+            screenFade.GetComponent<OVRScreenFade>().FadeOut();
+            while (screenFade.GetComponent<OVRScreenFade>().currentAlpha < 1)
+            {
+                FadeOut();
+            }
             LoadNextScene();
         }
+
+        /*if (finishedFadingOut)
+        {
+            LoadNextScene();
+        }*/
     }
 
     // Script to adjust distance of target from player based on player height
     // NOTE: May not work properly with quick compromise made for Quest testing
     public void AdjustTarget()
     {
-        Debug.Log("Adjusting Target");
+        //Debug.Log("Adjusting Target");
         targetField.transform.position = new Vector3(targetField.transform.position.x, targetField.transform.position.y, startZposField + ((height * multiplier) - targetOffset));
         targetObj.transform.position = new Vector3(targetObj.transform.position.x, targetObj.transform.position.y, startZposObject + ((height * multiplier) - targetOffset));
     }
@@ -87,7 +101,7 @@ public class LevelHeightScale : MonoBehaviour
     // Script to adjust platform height for projectile to rest on, matching where the player's hand will be
     public void AdjustPlatform()
     {
-        Debug.Log("Adjusting Platform");
+        //Debug.Log("Adjusting Platform");
         platform.transform.localScale = new Vector3(platform.transform.localScale.x, startHeight + armLength - platformOffset, platform.transform.localScale.z);
         platform.transform.position = new Vector3(platform.transform.position.x, startYposPlatform + (platform.transform.localScale.y / 2), platform.transform.position.z);
     }
@@ -109,6 +123,11 @@ public class LevelHeightScale : MonoBehaviour
         newProjectiles[i] = projectileInstance;
         projectileManager.GetComponent<ProjectileManager>().projectiles = newProjectiles;
         projectileManager.GetComponent<ProjectileManager>().AdditionalArrays();
+    }
+
+    void FadeOut()
+    {
+        // Empty?
     }
 
     public void LoadNextScene()

@@ -26,7 +26,7 @@ public class GroundChecker : MonoBehaviour
         // Finds target in scene
         target = GameObject.FindGameObjectWithTag("Target");
         // Finds progressionScore
-        //progressionScore = GameObject.Find("ProgressionScorer");
+        progressionScore = GameObject.Find("ProgressionScorer");
     }
 
     // When the projectile comes in contact with another collider
@@ -39,7 +39,7 @@ public class GroundChecker : MonoBehaviour
             //target.SendMessage("Miss", this.transform.position);
             target.GetComponent<AccuracyChecker>().Miss(this.transform.position, this.gameObject);
             // Tell the ProgressionScore object to log a miss
-            //progressionScore.GetComponent<ProgressionScoring>().ThrowComplete(false);
+            progressionScore.GetComponent<ProgressionScoring>().ThrowComplete(false);
             // Run the projectile's landed() function
             //Landed();
             tracking = false;

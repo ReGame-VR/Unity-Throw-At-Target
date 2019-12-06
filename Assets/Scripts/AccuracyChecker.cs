@@ -44,7 +44,7 @@ public class AccuracyChecker : MonoBehaviour
         // The distanceFromTarget TMPro will read the following before a projectile has been thrown
         distanceFromTargetText = "Please throw the projectile to begin.";
         // finds progressionScorer
-        //progressionScore = GameObject.Find("ProgressionScorer");
+        progressionScore = GameObject.Find("ProgressionScorer");
         // Finding the audio sources
         AudioSource[] audios = GetComponents<AudioSource>();
         successAudio = audios[0];
@@ -77,7 +77,7 @@ public class AccuracyChecker : MonoBehaviour
             // Play sound
             successAudio.Play();
             // Tell the ProgressionScore object to log a hit
-            //progressionScore.GetComponent<ProgressionScoring>().ThrowComplete(true);
+            progressionScore.GetComponent<ProgressionScoring>().ThrowComplete(true);
             // Add hit data to result text file
             logManager.GetComponent<LogTestResults>().AddText(other.gameObject.name + " successfully hit " + this.name + ".");
         }
