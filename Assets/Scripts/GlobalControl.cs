@@ -33,9 +33,6 @@ public class GlobalControl : MonoBehaviour
     public enum Scene { TitleScreen, Classroom, Park, Moon };
     public Scene nextScene;
 
-    // Image to load on UI to fade screen to black
-    public Image blackScreen;
-
     // Single instance of this class
     public static GlobalControl Instance;
 

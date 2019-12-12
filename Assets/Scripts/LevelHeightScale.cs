@@ -29,8 +29,8 @@ public class LevelHeightScale : MonoBehaviour
     private int nextSceneIndex;
     // Gameobject to control screenfades
     public GameObject screenFade;
-    // bool to say when screen has fully faded out
-    bool finishedFadingOut;
+    // bool to say when screen has fully faded in
+    bool finishedFadingIn = false;
 
     void Awake()
     {
@@ -73,20 +73,24 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
 
-        if (currScene.name != "Calibration" && (OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)))
+        if (screenFade.GetComponent<OVRScreenFade>().currentAlpha == 0)
         {
-            screenFade.GetComponent<OVRScreenFade>().FadeOut();
-            while (screenFade.GetComponent<OVRScreenFade>().currentAlpha < 1)
-            {
-                FadeOut();
-            }
-            LoadNextScene();
+            finishedFadingIn = true;
         }
 
-        /*if (finishedFadingOut)
+        if (//currScene.name != "Calibration" && 
+            //(OVRInput.GetUp(OVRInput.RawButton.X) || 
+            Input.GetKeyUp(KeyCode.KeypadEnter)
+            //)
+            )
         {
+            screenFade.GetComponent<OVRScreenFade>().FadeOut();
+            //}
+            //if (finishedFadingIn && screenFade.GetComponent<OVRScreenFade>().currentAlpha == 1)
+            //{
+            Fade();
             LoadNextScene();
-        }*/
+        }
     }
 
     // Script to adjust distance of target from player based on player height
@@ -125,9 +129,9 @@ public class LevelHeightScale : MonoBehaviour
         projectileManager.GetComponent<ProjectileManager>().AdditionalArrays();
     }
 
-    void FadeOut()
+    IEnumerator Fade()
     {
-        // Empty?
+        yield return new WaitForSeconds(screenFade.GetComponent<OVRScreenFade>().fadeTime);
     }
 
     public void LoadNextScene()
