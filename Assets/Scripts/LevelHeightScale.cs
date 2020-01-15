@@ -85,9 +85,6 @@ public class LevelHeightScale : MonoBehaviour
             )
         {
             screenFade.GetComponent<OVRScreenFade>().FadeOut();
-            //}
-            //if (finishedFadingIn && screenFade.GetComponent<OVRScreenFade>().currentAlpha == 1)
-            //{
             StartCoroutine(Fade());
         }
     }
@@ -132,6 +129,11 @@ public class LevelHeightScale : MonoBehaviour
     {
         yield return new WaitForSeconds(screenFade.GetComponent<OVRScreenFade>().fadeTime);
         LoadNextScene();
+    }
+
+    public void LoadSceneHelper()
+    {
+        Fade();
     }
 
     public void LoadNextScene()

@@ -103,6 +103,6 @@ public class ProgressionScoring : MonoBehaviour
     // Progress to next scene
     public void LoadNextScene()
     {
-        levelScaler.GetComponent<LevelHeightScale>().LoadNextScene();
+        levelScaler.GetComponent<LevelHeightScale>().LoadSceneHelper();
     }
 }
