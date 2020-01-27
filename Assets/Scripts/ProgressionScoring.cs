@@ -18,15 +18,20 @@ public class ProgressionScoring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // If on Random progression type, select a random value between 4 and 20 for total throws
+        // the participant must complete
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Random))
         {
             randomTotal = Random.Range(4, 20);
             Debug.Log("Player must complete " + randomTotal + " throws.");
         }
+        // If on Performance progression type, establish a Result array sized to match the denominator
+        // of the successes fraction (ex: 3/5 throws to progress -> Results[5])
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
         {
             throws = new Result[GlobalControl.Instance.numSuccesses.y];
         }
+        // Next Scene to load will be the one after this one in the build
         scene = SceneManager.GetActiveScene();
         nextSceneIndex = scene.buildIndex + 1;
     }
