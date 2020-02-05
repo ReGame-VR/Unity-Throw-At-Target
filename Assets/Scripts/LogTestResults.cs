@@ -13,10 +13,10 @@ public class LogTestResults : MonoBehaviour
     {
         // Set path of file 
         //FOR RIFT USE ONLY 
-        //path = "Assets/Resources/ResultsLog.txt";
+        path = "Assets/Resources/ResultsLog.txt";
 
         //FOR QUEST USE ONLY 
-        path = Application.persistentDataPath + "/test.txt";
+        //path = Application.persistentDataPath + "/test.txt";
 
         LogCurrentTest();
     }
@@ -48,5 +48,10 @@ public class LogTestResults : MonoBehaviour
     {
         content += "\n";
         File.AppendAllText(path, content);
+    }
+
+    public static void WriteToCSV(string ID, string name, string age, string path)
+    {
+
     }
 }
