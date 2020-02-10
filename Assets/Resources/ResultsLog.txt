@@ -3111,3 +3111,40 @@ Test: 11/1/2019 9:41:24 PM
 Test: 11/1/2019 9:43:26 PM
 
 Test: 11/1/2019 10:07:43 PM
+
+Test: 2/10/2020 2:35:52 PM
+
+Test: 2/10/2020 2:37:55 PM
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+TestProjectile(Clone) missed TestTarget by 0.8020725.
+Reset for next throw.
+TestProjectile(Clone) missed TestTarget by 0.6222605.
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+
+Test: 2/10/2020 2:38:36 PM
+ThrownNotebook(Clone) missed TrashTarget by 0.4120708.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+ThrownNotebook(Clone) successfully hit TrashTarget.
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+Reset for next throw.
+ThrownNotebook(Clone) missed TrashTarget by 0.5280429.
+Reset for next throw.
+ThrownNotebook(Clone) missed TrashTarget by 0.8140034.

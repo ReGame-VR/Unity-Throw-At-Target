@@ -29,8 +29,6 @@ public class LevelHeightScale : MonoBehaviour
     private int nextSceneIndex;
     // Gameobject to control screenfades
     public GameObject screenFade;
-    // bool to say when screen has fully faded in
-    bool finishedFadingIn = false;
 
     void Awake()
     {
@@ -72,11 +70,6 @@ public class LevelHeightScale : MonoBehaviour
     {
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
-
-        if (screenFade.GetComponent<OVRScreenFade>().currentAlpha == 0)
-        {
-            finishedFadingIn = true;
-        }
 
         if (//currScene.name != "Calibration" && 
             //(OVRInput.GetUp(OVRInput.RawButton.X) || 
@@ -125,17 +118,20 @@ public class LevelHeightScale : MonoBehaviour
         projectileManager.GetComponent<ProjectileManager>().AdditionalArrays();
     }
 
+    // Function to fade
     IEnumerator Fade()
     {
         yield return new WaitForSeconds(screenFade.GetComponent<OVRScreenFade>().fadeTime);
         LoadNextScene();
     }
 
+    // Function that can be publicly called to run Fade()
     public void LoadSceneHelper()
     {
         Fade();
     }
 
+    // Function to load next scene in progression mode
     public void LoadNextScene()
     {
         // If player is in Choice progression mode, move to the selected nextScene

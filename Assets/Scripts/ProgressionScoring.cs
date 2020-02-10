@@ -73,7 +73,10 @@ public class ProgressionScoring : MonoBehaviour
     // Marks a throw as completed, and logs its result in the array
     public void ThrowComplete(bool success)
     {
+        // Add to throw total
         totalThrows += 1;
+        // If success, add to success total, and if in Performance progression mode, add a Hit result
+        // to the Results array
         if (success)
         {
             totalSucesses += 1;
@@ -82,6 +85,7 @@ public class ProgressionScoring : MonoBehaviour
                 AddThrowResult(Result.Hit);
             }
         }
+        // If not a success, and in Performance progression mode, add a Miss result to 
         else
         {
             if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
@@ -92,14 +96,16 @@ public class ProgressionScoring : MonoBehaviour
     }
 
     // Adds a Result to the array of ThrowResults, filling in from the top, and removing the bottom one
+    // Acts as a queue, first-in-first-out
     public void AddThrowResult(Result throwResult)
     {
         // Result placeholder to hold the previous Result to aid in swapping the array elements
         Result prev = throws[0];
         throws[0] = throwResult;
+        Result temp;
         for (int i = 1; i < throws.Length; i++)
         {
-            Result temp = throws[i];
+            temp = throws[i];
             throws[i] = prev;
             prev = temp;
         }
@@ -108,6 +114,7 @@ public class ProgressionScoring : MonoBehaviour
     // Progress to next scene
     public void LoadNextScene()
     {
+        // Sends to levelScaler's load function for fade purposes
         levelScaler.GetComponent<LevelHeightScale>().LoadSceneHelper();
     }
 }
