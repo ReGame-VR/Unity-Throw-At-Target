@@ -80,12 +80,5 @@ public class RecalibrateHeight : MonoBehaviour
             projectileSpawned = true;
             Debug.Log("Calibration complete");
         }
-        // Loads Classroom level
-        /*if (//(OVRInput.GetUp(OVRInput.RawButton.X) || 
-            Input.GetKeyUp(KeyCode.KeypadEnter)//) 
-            && GlobalControl.Instance.hasCalibrated)
-        {
-            levelScaler.GetComponent<LevelHeightScale>().LoadNextScene();
-        }*/
     }
 }
