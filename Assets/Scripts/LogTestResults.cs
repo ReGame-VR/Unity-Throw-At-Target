@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ReadWriteCSV;
 using System.IO;
 
 public class LogTestResults : MonoBehaviour
@@ -13,7 +14,8 @@ public class LogTestResults : MonoBehaviour
     {
         // Set path of file 
         //FOR RIFT USE ONLY 
-        path = "Assets/Resources/ResultsLog.txt";
+        //path = "Assets/Resources/ResultsLog.txt";
+        path = "Assets/Resources/ResultsLog.csv";
 
         //FOR QUEST USE ONLY 
         //path = Application.persistentDataPath + "/test.txt";
