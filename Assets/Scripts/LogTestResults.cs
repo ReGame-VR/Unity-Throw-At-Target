@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ReadWriteCSV;
 using System.IO;
 
 public class LogTestResults : MonoBehaviour
@@ -50,10 +49,5 @@ public class LogTestResults : MonoBehaviour
     {
         content += "\n";
         File.AppendAllText(path, content);
-    }
-
-    public static void WriteToCSV(string ID, string name, string age, string path)
-    {
-
     }
 }
