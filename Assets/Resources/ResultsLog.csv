@@ -1,3 +1,43 @@
 Test Log
 
 Test: 2/24/2020 3:31:35 PM
+
+Test: 3/9/2020 3:03:33 PM
+
+Test: 3/9/2020 3:04:36 PM
+TestProjectile(Clone) missed TestTarget by 0.2919997.
+Reset for next throw.
+
+Test: 3/9/2020 3:13:11 PM
+TestProjectile(Clone) missed TestTarget by 0.5520818.
+Reset for next throw.
+Reset for next throw.
+
+Test: 3/9/2020 3:13:59 PM
+ThrownNotebook(Clone) missed TrashTarget by 0.3187484.
+Reset for next throw.
+ThrownNotebook(Clone) missed TrashTarget by 0.3516378.
+
+Test: 3/9/2020 3:14:20 PM
+Ball(Clone) missed HoopTarget by 0.4466059.
+Reset for next throw.
+Ball(Clone) missed HoopTarget by 0.4535311.
+Reset for next throw.
+
+Test: 3/9/2020 4:48:44 PM
+Reset for next throw.
+Reset for next throw.
+TestProjectile(Clone) missed TestTarget by 0.2500323.
+Reset for next throw.
+TestProjectile(Clone) missed TestTarget by 0.5152175.
+
+Test: 3/9/2020 4:49:08 PM
+
+Test: 3/9/2020 4:49:39 PM
+TestProjectile(Clone) missed TestTarget by 0.2454042.
+Reset for next throw.
+Reset for next throw.
+TestProjectile(Clone) missed TestTarget by 0.2237797.
+Reset for next throw.
+
+Test: 3/9/2020 4:50:03 PM
