@@ -1283,7 +1283,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6.290749e-22, z: 7.76e-43, w: 6.290749e-22}
+  m_BoundingSphereOverride: {x: 7.19e-43, y: NaN, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3450,6 +3450,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 663587035}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &663587042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 663587035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &693865784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,6 +4129,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 927372510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &948518137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948518139}
+  - component: {fileID: 948518138}
+  m_Layer: 8
+  m_Name: OVRScreenFade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &948518138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948518137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.5
+  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
+  fadeOnStart: 1
+  renderQueue: 5000
+--- !u!4 &948518139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948518137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 663587042}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971184648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,7 +4186,6 @@ GameObject:
   m_Component:
   - component: {fileID: 971184650}
   - component: {fileID: 971184649}
-  - component: {fileID: 971184651}
   m_Layer: 0
   m_Name: ClassroomScaler
   m_TagString: Untagged
@@ -4162,7 +4214,7 @@ MonoBehaviour:
   startZposField: 0
   startZposObject: 0
   projectileManager: {fileID: 693865784}
-  screenFade: {fileID: 971184648}
+  screenFade: {fileID: 948518137}
 --- !u!4 &971184650
 Transform:
   m_ObjectHideFlags: 0
@@ -4177,22 +4229,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &971184651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971184648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 0.5
-  fadeColor: {r: 0.01, g: 0.01, b: 0.01, a: 1}
-  fadeOnStart: 1
-  renderQueue: 5000
 --- !u!1 &973845079
 GameObject:
   m_ObjectHideFlags: 0
