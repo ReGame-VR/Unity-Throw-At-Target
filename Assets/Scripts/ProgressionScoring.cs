@@ -29,6 +29,7 @@ public class ProgressionScoring : MonoBehaviour
         // of the successes fraction (ex: 3/5 throws to progress -> Results[5])
         if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
         {
+            Debug.Log("Player must complete " + GlobalControl.Instance.numSuccesses.x + " out of the last " + GlobalControl.Instance.numSuccesses.y + " throws.");
             throws = new Result[GlobalControl.Instance.numSuccesses.y];
         }
         // Next Scene to load will be the one after this one in the build
@@ -54,6 +55,7 @@ public class ProgressionScoring : MonoBehaviour
                 // If the player has not thrown enough to meet the required condition
                 if (throws[i].Equals(Result.Null))
                 {
+                    Debug.Log("Not enough total throws.");
                     break;
                 }
                 // Tallies up each success
@@ -61,12 +63,13 @@ public class ProgressionScoring : MonoBehaviour
                 {
                     currSuccesses += 1;
                 }
+                // If player has met required # of successes, move on to next scene
+                if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
+                {
+                    LoadNextScene();
+                }
             }
-            // If player has met required # of successes, move on to next scene
-            if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
-            {
-                LoadNextScene();
-            }
+            
         }
     }
 
