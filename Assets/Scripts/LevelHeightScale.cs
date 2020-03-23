@@ -71,7 +71,7 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
 
-        if (//currScene.name != "Calibration" && 
+        if (currScene.name != "Calibration" && 
             //(OVRInput.GetUp(OVRInput.RawButton.X) || 
             Input.GetKeyUp(KeyCode.KeypadEnter)
             //)
@@ -140,7 +140,7 @@ public class LevelHeightScale : MonoBehaviour
             GlobalControl.Instance.NextScene();
         }
         // Otherwise, when in other modes, move linearly to the next scene
-        Debug.Log("Loading next scene");
+        Debug.Log("Loading next scene: " + SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
         SceneManager.LoadScene(nextSceneIndex);
     }
 }

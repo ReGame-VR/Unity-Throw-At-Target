@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour
             valueText.gameObject.SetActive(true);
             successSlider.gameObject.SetActive(true);
             totalSlider.gameObject.SetActive(true);
-            valueText.text = "Player must complete " + successSlider.value + "/" + totalSlider.value + " attempts.";
+            //valueText.text = "Player must complete " + successSlider.value + "/" + totalSlider.value + " attempts.";
             if (totalSlider.value < successSlider.value)
             {
                 totalSlider.value = successSlider.value;

@@ -7,7 +7,7 @@ public class ProgressionScoring : MonoBehaviour
 {
     public enum Result { Null, Hit, Miss };
     public Result[] throws;
-    public int totalThrows, totalSucesses;
+    public int totalThrows, totalSuccesses;
     public int randomTotal;
     // GameObject reference to levelScaler object
     public GameObject levelScaler;
@@ -50,6 +50,7 @@ public class ProgressionScoring : MonoBehaviour
         {
             // Int to track the current # of successes within the tracked # of throws
             int currSuccesses = 0;
+            // Check every item in throws array
             for (int i = 0; i < throws.Length; i++)
             {
                 // If the player has not thrown enough to meet the required condition
@@ -62,10 +63,12 @@ public class ProgressionScoring : MonoBehaviour
                 if (throws[i].Equals(Result.Hit))
                 {
                     currSuccesses += 1;
+                    Debug.Log("Tallied success, current successes is " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
                 }
                 // If player has met required # of successes, move on to next scene
                 if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
                 {
+                    Debug.Log("Success threshold met with " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
                     LoadNextScene();
                 }
             }
@@ -77,12 +80,14 @@ public class ProgressionScoring : MonoBehaviour
     public void ThrowComplete(bool success)
     {
         // Add to throw total
+        Debug.Log("Throw logged.");
         totalThrows += 1;
         // If success, add to success total, and if in Performance progression mode, add a Hit result
         // to the Results array
         if (success)
         {
-            totalSucesses += 1;
+            Debug.Log("Throw was successful.");
+            totalSuccesses += 1;
             if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
             {
                 AddThrowResult(Result.Hit);
