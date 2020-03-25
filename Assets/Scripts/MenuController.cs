@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour
             valueText.gameObject.SetActive(true);
             successSlider.gameObject.SetActive(true);
             totalSlider.gameObject.SetActive(true);
-            //valueText.text = "Player must complete " + successSlider.value + "/" + totalSlider.value + " attempts.";
+            valueText.text = "Player must complete " + successSlider.value + "/" + totalSlider.value + " attempts.";
             if (totalSlider.value < successSlider.value)
             {
                 totalSlider.value = successSlider.value;
@@ -116,7 +116,7 @@ public class MenuController : MonoBehaviour
         {
             GlobalControl.Instance.isRightHanded = rightHandToggle.enabled;
             // Specifically loads Calibration scene here so as to not overwrite Choice's nextScene
-            Debug.Log("Loading Calibration Scene");
+            Debug.Log("DEBUG ----- Loading Calibration Scene");
             SceneManager.LoadScene("Calibration");
         }
         // If player has already calibrated and is still undergoing Choice progression,

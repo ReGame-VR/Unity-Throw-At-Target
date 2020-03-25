@@ -71,7 +71,7 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
 
-        if (currScene.name != "Calibration" && 
+        if (//currScene.name != "Calibration" && 
             //(OVRInput.GetUp(OVRInput.RawButton.X) || 
             Input.GetKeyUp(KeyCode.KeypadEnter)
             //)
