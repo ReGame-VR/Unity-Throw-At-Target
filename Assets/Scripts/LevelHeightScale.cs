@@ -102,7 +102,7 @@ public class LevelHeightScale : MonoBehaviour
     // Spawns the projectile to be thrown
     public void SpawnProjectile()
     {
-        Debug.Log("Spawning " + projectilePrefab.name);
+        Debug.Log("DEBUG ----- Spawning " + projectilePrefab.name);
         // Spawns projectile based on provided prefab, updates corresponding arrays for projectiles, their positions, and their rotations
         projectileInstance = (GameObject)Instantiate(projectilePrefab, new Vector3(platform.transform.position.x, 
             platform.transform.position.y + platform.transform.localScale.y, 
@@ -128,6 +128,8 @@ public class LevelHeightScale : MonoBehaviour
     // Function that can be publicly called to run Fade()
     public void LoadSceneHelper()
     {
+        // * Why does it get here... *
+        Debug.Log("DEBUG ----- Called the proper helper function to fade.");
         Fade();
     }
 
@@ -140,7 +142,8 @@ public class LevelHeightScale : MonoBehaviour
             GlobalControl.Instance.NextScene();
         }
         // Otherwise, when in other modes, move linearly to the next scene
-        Debug.Log("Loading next scene: " + SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
+        // * ...but not to here? *
+        Debug.Log("DEBUG ----- Loading next scene: " + SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
         SceneManager.LoadScene(nextSceneIndex);
     }
 }

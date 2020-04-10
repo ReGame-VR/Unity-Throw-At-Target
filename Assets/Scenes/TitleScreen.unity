@@ -2593,7 +2593,6 @@ MonoBehaviour:
   progression: 0
   numSuccesses: {x: 0, y: 0}
   nextScene: 0
-  blackScreen: {fileID: 0}
 --- !u!4 &512867281
 Transform:
   m_ObjectHideFlags: 0

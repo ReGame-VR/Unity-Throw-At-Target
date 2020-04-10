@@ -56,19 +56,19 @@ public class ProgressionScoring : MonoBehaviour
                 // If the player has not thrown enough to meet the required condition
                 if (throws[i].Equals(Result.Null))
                 {
-                    Debug.Log("Not enough total throws.");
+                    Debug.Log("DEBUG ----- Not enough total throws.");
                     break;
                 }
                 // Tallies up each success
                 if (throws[i].Equals(Result.Hit))
                 {
                     currSuccesses += 1;
-                    Debug.Log("Tallied success, current successes is " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
+                    Debug.Log("DEBUG ----- Tallied success, current successes is " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
                 }
                 // If player has met required # of successes, move on to next scene
                 if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
                 {
-                    Debug.Log("Success threshold met with " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
+                    Debug.Log("DEBUG ----- Success threshold met with " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
                     LoadNextScene();
                 }
             }
@@ -80,13 +80,13 @@ public class ProgressionScoring : MonoBehaviour
     public void ThrowComplete(bool success)
     {
         // Add to throw total
-        Debug.Log("Throw logged.");
+        Debug.Log("DEBUG ----- Throw logged.");
         totalThrows += 1;
         // If success, add to success total, and if in Performance progression mode, add a Hit result
         // to the Results array
         if (success)
         {
-            Debug.Log("Throw was successful.");
+            Debug.Log("DEBUG ----- Throw was successful.");
             totalSuccesses += 1;
             if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance))
             {
