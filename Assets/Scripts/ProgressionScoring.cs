@@ -123,6 +123,7 @@ public class ProgressionScoring : MonoBehaviour
     public void LoadNextScene()
     {
         // Sends to levelScaler's load function for fade purposes
+        Debug.Log("DEBUG ----- Sending to levelScaler's load function.");
         levelScaler.GetComponent<LevelHeightScale>().LoadSceneHelper();
     }
 }
