@@ -77,8 +77,7 @@ public class LevelHeightScale : MonoBehaviour
             //)
             )
         {
-            screenFade.GetComponent<OVRScreenFade>().FadeOut();
-            StartCoroutine(Fade());
+            LoadSceneHelper();
         }
     }
 
@@ -128,9 +127,8 @@ public class LevelHeightScale : MonoBehaviour
     // Function that can be publicly called to run Fade()
     public void LoadSceneHelper()
     {
-        // * Why does it get here... *
-        Debug.Log("DEBUG ----- Called the proper helper function to fade.");
-        Fade();
+        screenFade.GetComponent<OVRScreenFade>().FadeOut();
+        StartCoroutine(Fade());
     }
 
     // Function to load next scene in progression mode
