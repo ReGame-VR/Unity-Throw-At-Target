@@ -32,48 +32,24 @@ public class ProgressionScoring : MonoBehaviour
             Debug.Log("Player must complete " + GlobalControl.Instance.numSuccesses.x + " out of the last " + GlobalControl.Instance.numSuccesses.y + " throws.");
             throws = new Result[GlobalControl.Instance.numSuccesses.y];
         }
+
         // Next Scene to load will be the one after this one in the build
         scene = SceneManager.GetActiveScene();
-        nextSceneIndex = scene.buildIndex + 1;
+        nextSceneIndex = scene.buildIndex;
+        if (SceneManager.sceneCount - 1 > nextSceneIndex)
+        {
+            nextSceneIndex++;
+        }
+        else
+        {
+            Debug.Log("Next scene not loaded in build settings. Reloading current scene.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // If the player throws enough total throws to meet the total requirement, move on to the next scene
-        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Random) && totalThrows >= randomTotal)
-        {
-            LoadNextScene();
-        }
-        // If the player has thrown enough times that they could have met the performance goal (assuming 100% success rate)
-        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance) && totalThrows >= GlobalControl.Instance.numSuccesses.x)
-        {
-            // Int to track the current # of successes within the tracked # of throws
-            int currSuccesses = 0;
-            // Check every item in throws array
-            for (int i = 0; i < throws.Length; i++)
-            {
-                // If the player has not thrown enough to meet the required condition
-                if (throws[i].Equals(Result.Null))
-                {
-                    Debug.Log("DEBUG ----- Not enough total throws.");
-                    break;
-                }
-                // Tallies up each success
-                if (throws[i].Equals(Result.Hit))
-                {
-                    currSuccesses += 1;
-                    Debug.Log("DEBUG ----- Tallied success, current successes is " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
-                }
-                // If player has met required # of successes, move on to next scene
-                if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
-                {
-                    Debug.Log("DEBUG ----- Success threshold met with " + currSuccesses + " out of " + GlobalControl.Instance.numSuccesses.x + " needed.");
-                    LoadNextScene();
-                }
-            }
-            
-        }
+        //CheckProgression();
     }
 
     // Marks a throw as completed, and logs its result in the array
@@ -101,6 +77,8 @@ public class ProgressionScoring : MonoBehaviour
                 AddThrowResult(Result.Miss);
             }
         }
+
+        CheckProgression();
     }
 
     // Adds a Result to the array of ThrowResults, filling in from the top, and removing the bottom one
@@ -119,11 +97,54 @@ public class ProgressionScoring : MonoBehaviour
         }
     }
 
+    private void CheckProgression()
+    {
+        // If the player throws enough total throws to meet the total requirement, move on to the next scene
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Random) && totalThrows >= randomTotal)
+        {
+            LoadNextScene();
+        }
+
+        // If the player has thrown enough times that they could have met the performance goal (assuming 100% success rate)
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Performance) &&
+            totalThrows >= GlobalControl.Instance.numSuccesses.x)
+        {
+            // Int to track the current # of successes within the tracked # of throws
+            int currSuccesses = 0;
+            // Check every item in throws array
+            for (int i = 0; i < throws.Length; i++)
+            {
+                // If the player has not thrown enough to meet the required condition
+                if (throws[i].Equals(Result.Null))
+                {
+                    Debug.Log("DEBUG ----- Not enough total throws.");
+                    break;
+                }
+
+                // Tallies up each success
+                if (throws[i].Equals(Result.Hit))
+                {
+                    currSuccesses += 1;
+                    Debug.Log("DEBUG ----- Tallied success, current successes is " + currSuccesses + " out of " +
+                              GlobalControl.Instance.numSuccesses.x + " needed.");
+                }
+
+                // If player has met required # of successes, move on to next scene
+                if (currSuccesses >= GlobalControl.Instance.numSuccesses.x)
+                {
+                    Debug.Log("DEBUG ----- Success threshold met with " + currSuccesses + " out of " +
+                              GlobalControl.Instance.numSuccesses.x + " needed.");
+                    LoadNextScene();
+                }
+            }
+        }
+    }
+
     // Progress to next scene
     public void LoadNextScene()
     {
         // Sends to levelScaler's load function for fade purposes
         Debug.Log("DEBUG ----- Sending to levelScaler's load function.");
-        levelScaler.GetComponent<LevelHeightScale>().LoadSceneHelper();
+        levelScaler.GetComponent<LevelHeightScale>()?.LoadSceneHelper();
     }
 }

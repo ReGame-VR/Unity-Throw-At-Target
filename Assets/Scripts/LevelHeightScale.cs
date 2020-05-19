@@ -120,7 +120,10 @@ public class LevelHeightScale : MonoBehaviour
     // Function to fade
     IEnumerator Fade()
     {
-        yield return new WaitForSeconds(screenFade.GetComponent<OVRScreenFade>().fadeTime);
+        var fadeScript = screenFade.GetComponent<OVRScreenFade>();
+
+        if (fadeScript)
+            yield return new WaitForSeconds(fadeScript.fadeTime);
         LoadNextScene();
     }
 

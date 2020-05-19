@@ -64,22 +64,32 @@ public class AccuracyChecker : MonoBehaviour
     // Called when another object enters the trigger area of this target object.
     private void OnTriggerEnter(Collider other)
     {
+        var otherGameobject = other.gameObject;
+        var groundChecker = otherGameobject.GetComponent<GroundChecker>();
+        if (!groundChecker) return;
+
         // If a projectile-tagged object hits the trigger while it is being tracked
         //if (other.gameObject.GetComponent<GroundChecker>().GetTracking() && other.gameObject.CompareTag("Projectile"))
-        if (other.gameObject.GetComponent<GroundChecker>().tracking && other.gameObject.CompareTag("Projectile"))
+        if (groundChecker.tracking && otherGameobject.CompareTag("Projectile"))
         {
             // Update the hit counter
             numHit += 1;
             // Tell the projectile to invoke its Landed() function
-            other.gameObject.SendMessage("Landed");
+            otherGameobject.SendMessage("Landed");
             // Update the distanceFromTargetText to reflect the successful hit
             distanceFromTargetText = "Target successfully hit!";
+
             // Play sound
-            successAudio.Play();
+            if (successAudio)
+                successAudio.Play();
+
             // Tell the ProgressionScore object to log a hit
-            progressionScore.GetComponent<ProgressionScoring>().ThrowComplete(true);
+            if (progressionScore)
+                progressionScore.GetComponent<ProgressionScoring>()?.ThrowComplete(true);
+
             // Add hit data to result text file
-            logManager.GetComponent<LogTestResults>().AddText(other.gameObject.name + " successfully hit " + this.name + ".");
+            if (logManager)
+                logManager.GetComponent<LogTestResults>()?.AddText(other.gameObject.name + " successfully hit " + this.name + ".");
         }
     }
 
