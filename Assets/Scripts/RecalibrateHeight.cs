@@ -65,8 +65,8 @@ public class RecalibrateHeight : MonoBehaviour
             levelScaler.GetComponent<LevelHeightScale>().AdjustPlatform();
         }
         // If operator presses RightShift, or if player presses Y, the calibration completes and values are stored
-        if (//(OVRInput.GetUp(OVRInput.RawButton.Y) || 
-            Input.GetKeyUp(KeyCode.RightShift)//)
+        if (OVRInput.GetUp(OVRInput.RawButton.Y) || 
+            Input.GetKeyUp(KeyCode.RightShift)
             && !GlobalControl.Instance.hasCalibrated)
         {
             GlobalControl.Instance.hasCalibrated = true;

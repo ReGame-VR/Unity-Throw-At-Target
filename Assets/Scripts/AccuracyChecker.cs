@@ -103,7 +103,10 @@ public class AccuracyChecker : MonoBehaviour
         //  Updates the text string to reflect this
         distanceFromTargetText = "You missed by: " + distAway;
         // Play sound
-        missAudio.Play();
+        if (missAudio)
+        {
+            missAudio.Play();
+        }
         // Add miss data to result text file
         logManager.GetComponent<LogTestResults>().AddText(projectile.name + " missed " + this.name + " by " + distAway + ".");
     }

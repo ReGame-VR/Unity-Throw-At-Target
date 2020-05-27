@@ -27,6 +27,8 @@ public class LevelHeightScale : MonoBehaviour
     private Scene currScene;
     // int to get index of next scene to load from calibration
     private int nextSceneIndex;
+    // bool to control fade
+    private bool hasFaded;
     // Gameobject to control screenfades
     public GameObject screenFade;
 
@@ -43,6 +45,7 @@ public class LevelHeightScale : MonoBehaviour
         armLength = GlobalControl.Instance.armLength;
         targetOffset = GlobalControl.Instance.targetOffset;
         currScene = SceneManager.GetActiveScene();
+        hasFaded = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -71,12 +74,10 @@ public class LevelHeightScale : MonoBehaviour
         height = GlobalControl.Instance.height;
         armLength = GlobalControl.Instance.armLength;
 
-        if (//currScene.name != "Calibration" && 
-            //(OVRInput.GetUp(OVRInput.RawButton.X) || 
-            Input.GetKeyUp(KeyCode.KeypadEnter)
-            //)
-            )
+        if (GlobalControl.Instance.hasCalibrated && !hasFaded &&
+            (OVRInput.GetUp(OVRInput.RawButton.X) || Input.GetKeyUp(KeyCode.KeypadEnter)))
         {
+            hasFaded = true;
             LoadSceneHelper();
         }
     }
