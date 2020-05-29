@@ -885,6 +885,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7991456478472254191, guid: 2dda5dcd120782d468d9976c5cb1e665,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 2769193825898889464, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -905,6 +911,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2769193825898889464, guid: 2dda5dcd120782d468d9976c5cb1e665,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 8533133021300947727, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -925,6 +937,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8533133021300947727, guid: 2dda5dcd120782d468d9976c5cb1e665,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
     - target: {fileID: 590090249425396306, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -958,12 +976,12 @@ PrefabInstance:
     - target: {fileID: 8366566205737526079, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.751
+      value: 0.598
       objectReference: {fileID: 0}
     - target: {fileID: 8366566205737526079, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.883
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 8366566205737526079, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
@@ -989,6 +1007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366566205737526079, guid: 2dda5dcd120782d468d9976c5cb1e665,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.407
       objectReference: {fileID: 0}
     - target: {fileID: 6043472971861247530, guid: 2dda5dcd120782d468d9976c5cb1e665,
         type: 3}
@@ -1449,7 +1472,7 @@ GameObject:
   - component: {fileID: 1818092568}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
