@@ -108,7 +108,7 @@ public class AccuracyChecker : MonoBehaviour
             missAudio.Play();
         }
         // Add miss data to result text file
-        logManager.GetComponent<LogTestResults>().AddText(projectile.name + " missed " + this.name + " by " + distAway + ".");
+        //logManager.GetComponent<LogTestResults>().AddText(projectile.name + " missed " + this.name + " by " + distAway + ".");
     }
 
     // Function to reset the text string when called
