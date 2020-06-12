@@ -33,16 +33,25 @@ public class ProgressionScoring : MonoBehaviour
             throws = new Result[GlobalControl.Instance.numSuccesses.y];
         }
 
-        // Next Scene to load will be the one after this one in the build
-        scene = SceneManager.GetActiveScene();
-        nextSceneIndex = scene.buildIndex;
-        if (SceneManager.sceneCount - 1 > nextSceneIndex)
+        // After this scene, in Choice mode, always return to title menu
+        if (GlobalControl.Instance.progression.Equals(GlobalControl.ProgressionType.Choice))
         {
-            nextSceneIndex++;
+            nextSceneIndex = 0;
         }
+
         else
         {
-            Debug.Log("Next scene not loaded in build settings. Reloading current scene.");
+            // Next Scene to load will be the one after this one in the build
+            scene = SceneManager.GetActiveScene();
+            nextSceneIndex = scene.buildIndex;
+            if (SceneManager.sceneCount - 1 > nextSceneIndex)
+            {
+                nextSceneIndex++;
+            }
+            else
+            {
+                Debug.Log("Next scene not loaded in build settings. Reloading current scene.");
+            }
         }
     }
 
