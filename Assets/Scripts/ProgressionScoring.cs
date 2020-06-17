@@ -55,12 +55,6 @@ public class ProgressionScoring : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //CheckProgression();
-    }
-
     // Marks a throw as completed, and logs its result in the array
     public void ThrowComplete(bool success)
     {

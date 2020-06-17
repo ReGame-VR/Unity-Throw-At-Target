@@ -144,7 +144,6 @@ public class LevelHeightScale : MonoBehaviour
             GlobalControl.Instance.NextScene();
         }
         // Otherwise, when in other modes, move linearly to the next scene
-        // * ...but not to here? *
         Debug.Log("DEBUG ----- Loading next scene: " + SceneManager.GetSceneByBuildIndex(nextSceneIndex).name);
         SceneManager.LoadScene(nextSceneIndex);
     }

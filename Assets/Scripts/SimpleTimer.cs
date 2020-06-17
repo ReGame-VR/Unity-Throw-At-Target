@@ -16,6 +16,6 @@ public class SimpleTimer : MonoBehaviour
 
     void TimerEnded()
     {
-
+        // Finish
     }
 }
