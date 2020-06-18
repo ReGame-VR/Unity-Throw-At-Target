@@ -25,6 +25,7 @@ Ground Checker
 Level Height Scale
 - Class tied to Level Scaler objects (one per scene except for title and ending)
 - Responsible for adjusting size of platform and distance of target, to correspond with calibration data (which it gets from GlobalControl)
+- Also handles swapping between scenes with a fade
 
 Log Test Results
 - Class tied to Log Manager object (one per scene except for title and ending)
@@ -39,7 +40,7 @@ Menu Controller
 Progression Scoring
 - Class tied to Progression Scoring object (one per scene except for title and ending)
 - Processes whether the player has reached the given progression goal (from Global Control)
-- Advances to next scene if so
+- Tells Level Height Scale to advance to next scene if so
 
 Projectile Manager
 - Class tied to Projectile Manager object (one per scene except for title and ending)
@@ -66,7 +67,17 @@ Title Scene
 
 Calibration
 - Operator asks player to stand at a position comfortable to pick up an object
-- Operator presses 
+- Operator presses RightShift to calibrate (or player, for debugging, can press Y) to lock in calibration data
+- Player can practice in this scene until ready to move on, to reset the projectile operator can press Return (or player, for debugging, can press A)
+- To progress to the next scene (also applies to every scene except for title and ending), operator presses KeypadEnter (or player, for debugging, can press X)
+
+Classroom/Park/Moon
+- Player must fulfill progression requirement to move on
+- Throw object as normal, operator can assist with player as needed
+- The same keybinds apply for resetting a projectile after throw and advancing to next scene
+
+End
+- Player reaches end, can take off headset
 
 # Notes
 - Choice progression unfinished
