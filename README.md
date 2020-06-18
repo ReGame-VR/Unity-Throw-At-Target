@@ -41,13 +41,32 @@ Progression Scoring
 - Processes whether the player has reached the given progression goal (from Global Control)
 - Advances to next scene if so
 
+Projectile Manager
+- Class tied to Projectile Manager object (one per scene except for title and ending)
+- Keeps track of initial positions of projectiles, for resetting purposes
 
+ReadWriteCSV
+- Unused class
+- Also borrowed from the CharlesHoodGrant task repo, originally from a different tutorial linked in the file
+- Meant to be used to simply read and write to CSV, but never managed to implement properly
+
+Recalibrate Height
+- Class tied to Height Calibration object in Calibration scene
+- Handles the height and arm length measurements of the player, before sending those to Global Control upon finishing calibrating
+
+Simple Timer
+- Unfinished class
+- Meant to simply run a timer (for choice progression) and execute a function on finish (change scene)
 
 # General User Guide
 Title Scene
 - Put player in headset
 - Operator selects progression mode (if Performance, select necessary throws; if choice, select scene and time)
+- Clicks "Continue" button
 
+Calibration
+- Operator asks player to stand at a position comfortable to pick up an object
+- Operator presses 
 
 # Notes
 - Choice progression unfinished
