@@ -59,6 +59,22 @@ Simple Timer
 - Unfinished class
 - Meant to simply run a timer (for choice progression) and execute a function on finish (change scene)
 
+# Progression Modes
+Performance
+- Operator selects X number of successes out of last Y throws (ex. 2 out of 5)
+- Player must succeed in that number of throws to move on (ex. 2/5 -> success, miss, miss, miss, success -> continue)
+- Throw information is selected on title screen by operator, and stored in Global Control since it is constant
+
+Random
+- Player has to complete a random number of total throws, regardless of outcome, re-rolled each scene
+- Throw information is decided upon entering a scene with Progression Scorer object (Classroom, Park, Moon), and stored in that object since it changes with each scene
+
+Choice [UNFINISHED]
+- Operator selects a scene and amount of time for the player
+- Player goes to that scene, plays for that amount of time, and then is transported back to title screen
+- This can loop as many times as operator needs
+- Scene/Time information is selected on title screen by operator, and stored in Global Control since it is constant
+
 # General User Guide
 Title Scene
 - Put player in headset
