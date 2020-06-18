@@ -3,5 +3,5 @@
  Newer build with some major changes, made into its own repository to keep 
  old code separate and intact.
 
-- Global Control
-Test dialog
+Global Control
+- Test dialog
